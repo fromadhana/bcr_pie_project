@@ -1,4 +1,5 @@
 pandas
 streamlit
-shillelagh 
+shillelagh
+shillelagh[gsheetsapi]
 google-auth
