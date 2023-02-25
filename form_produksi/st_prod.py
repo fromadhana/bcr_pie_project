@@ -15,14 +15,6 @@ st.set_page_config(
   page_title="Form Produksi Pie",
   page_icon="👨🏻‍🍳")
 
-#hide menu
-hide_menu_style = """
-          <style>
-          #MainMenu {visibility: hidden; }
-          footer {visibility: hidden;}
-          </style>
-          """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 #title
 st.subheader(":orange[FORM PRODUKSI PIE GURIH90/JOGLO] 🧁")
@@ -118,11 +110,10 @@ with st.form(key= "form_produksi", clear_on_submit=True):
               "auth_provider_x509_cert_url" : st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
               "client_x509_cert_url" : st.secrets["gcp_service_account"]["client_x509_cert_url"]},
               "subject" : st.secrets["gcp_service_account"]["client_email"],},},)
-    
     #load to gsheet
     cursor = connection.cursor()
-    #sheet_url = st.secrets["private_gsheets_url"]
-    query = f'INSERT INTO "https://docs.google.com/spreadsheets/d/1KBLYX9vRZhKAokV_Ct34Bd7tpfNPUGWj_9surfLs4B4/edit?usp=sharing" VALUES ("{tp}", "{set}", "{merk}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}")'
+    sheet_url = st.secrets["private_gsheets_url"]
+    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{set}", "{merk}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}")'
     cursor.execute(query)
     st.balloons()
 
