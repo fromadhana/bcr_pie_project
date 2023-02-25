@@ -31,7 +31,7 @@ st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi p
 #display streamlit form
 with st.form(key= "form_produksi", clear_on_submit=True):
    #date input
-   tp = st.date_input(label=":orange[Tanggal Produksi] 📅", min_value=datetime.now(), max_value=datetime.now())
+   tp = st.date_input(label=":orange[Tanggal Produksi] 📅")
 
    #multiselect for employee attendance
    abs = st.multiselect(":orange[Siapa saja yang masuk hari ini?] 👨🏻‍🍳",
