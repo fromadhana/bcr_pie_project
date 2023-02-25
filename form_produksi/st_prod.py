@@ -105,9 +105,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
                 'https://www.googleapis.com/auth/drive.readonly', 
                 'https://spreadsheets.google.com/feeds'])
     #shillelagh
-    connection = connect(":memory:", adapter_kwargs={
-     "gsheetsapi" : {
-     "service_account_info": {
+    connection = connect(":memory:", adapter_kwargs={"gsheetsapi" : { "service_account_info": {
      
               "type" : st.secrets["gcp_service_account"]["type"],
               "project_id" : st.secrets["gcp_service_account"]["project_id"],
