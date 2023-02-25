@@ -3,41 +3,49 @@ author: f.romadhana@gmail.com
 
 """
 
-#library
+#import necessary libraries
+import pandas as pd
+import streamlit as st
+from datetime import datetime
 from google.oauth2 import service_account
 from shillelagh.backends.apsw.db import connect
-import streamlit as st
-import pandas as pd
-from datetime import datetime
 
-#page config
+#set page configuration
 st.set_page_config(
   page_title="Form Produksi Pie",
   page_icon="👨🏻‍🍳")
 
+#hide streamlit menu and footer
+hide_menu_style = """
+          <style>
+          #MainMenu {visibility: hidden; }
+          footer {visibility: hidden;}
+          </style>
+          """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-#title
+#display title and caption
 st.subheader(":orange[FORM PRODUKSI PIE GURIH90/JOGLO] 🧁")
 st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi pie PT. Bogati Cerita Rasa")
 
-#streamlit form
+#display streamlit form
 with st.form(key= "form_produksi", clear_on_submit=True):
-   #tanggal produksi
+   #date input
    tp = st.date_input(label=":orange[Tanggal Produksi] 📅", value=datetime.now(), min_value=datetime.now(), max_value=datetime.now())
 
-   #absensi karyawan
+   #multiselect for employee attendance
    abs = st.multiselect(":orange[Siapa saja yang masuk hari ini?] 👨🏻‍🍳",
         ['Muh. Firman Sah', 'M. Ryan Sah', 
         'Marfian Dani', 'Ahmad Maulana (Tibung)', 
         'Firmansyah', 'Indra Danur Wendra'])
    
-   #jumlah set produksi
-   set = st.selectbox(':orange[Berapa SET produksi?]💰', (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))
+   #selectbox for number of pie sets produced
+   set = st.selectbox(':orange[Berapa SET produksi?]💰', list(range(21)))
    
-   #merk produksi
+   #selectbox for pie brand
    merk = st.selectbox(':orange[Merk yang di produksi?]🎯', ('Pie Gurih90', 'Pie Joglo'))
    
-   #jumlah varian rasa yang diproduksi
+   #number of boxes produced per pie flavor
    st.caption(":orange[Berapa BOX varian rasa yang di produksi?]")
    col1, col2 = st.columns(2)
    with col1:
@@ -97,8 +105,9 @@ with st.form(key= "form_produksi", clear_on_submit=True):
                 'https://www.googleapis.com/auth/drive.readonly', 
                 'https://spreadsheets.google.com/feeds'])
     #shillelagh
-    connection = connect(":memory:", adapter_kwargs={"gsheetsapi" : { "service_account_info": {
-     
+    connection = connect(":memory:", adapter_kwargs={
+      "gsheetsapi" : { 
+      "service_account_info": {
               "type" : st.secrets["gcp_service_account"]["type"],
               "project_id" : st.secrets["gcp_service_account"]["project_id"],
               "private_key_id" : st.secrets["gcp_service_account"]["private_key_id"],
@@ -120,4 +129,5 @@ with st.form(key= "form_produksi", clear_on_submit=True):
    else:
     st.warning('Isi jumlah BOX sesuai dengan varian rasa yang di produksi. SEMANGAT!', icon="⚠️")
     st.stop()
+
 
