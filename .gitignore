@@ -1,0 +1,12 @@
+# Ignore Mac system files
+*.DS_store
+
+# Ignore all files related to API keys
+*.env
+
+#Ignore all history
+*.history
+
+#Ignore all secret
+*.streamlit
+*.toml
