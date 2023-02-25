@@ -2,4 +2,4 @@
 base="dark"
 
 [browser]
-gatherUsageStats = False
+gatherUsageStats = false
