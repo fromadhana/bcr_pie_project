@@ -8,5 +8,4 @@
 *.history
 
 #Ignore all secret
-*.streamlit
-*.toml
+secrets.toml
