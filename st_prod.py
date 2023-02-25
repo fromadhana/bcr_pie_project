@@ -16,13 +16,13 @@ st.set_page_config(
   page_icon="👨🏻‍🍳")
 
 #hide streamlit menu and footer
-#hide_menu_style = """
-#          <style>
-#          #MainMenu {visibility: hidden; }
-#          footer {visibility: hidden;}
-#          </style>
-#          """
-#st.markdown(hide_menu_style, unsafe_allow_html=True)
+hide_menu_style = """
+          <style>
+          #MainMenu {visibility: hidden; }
+          footer {visibility: hidden;}
+          </style>
+          """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 #display title and caption
 st.subheader(":orange[FORM PRODUKSI PIE GURIH90/JOGLO] 🧁")
