@@ -119,7 +119,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
               "token_uri" : st.secrets["gcp_service_account"]["token_uri"],
               "auth_provider_x509_cert_url" : st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
               "client_x509_cert_url" : st.secrets["gcp_service_account"]["client_x509_cert_url"]},
-              "subject" : "gspread-service@bcr-project-378609.iam.gserviceaccount.com",},},)
+              "subject" : st.secrets["gcp_service_account"]["client_email"],},},)
     
     #load to gsheet
     cursor = connection.cursor()
