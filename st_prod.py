@@ -6,6 +6,8 @@ author: f.romadhana@gmail.com
 #import necessary libraries
 import pandas as pd
 import streamlit as st
+from time import sleep
+from stqdm import stqdm
 from datetime import datetime
 from google.oauth2 import service_account
 from shillelagh.backends.apsw.db import connect
@@ -26,7 +28,6 @@ st.markdown(f""" <style>
         padding-bottom: {padding}rem;
     }} </style> """, unsafe_allow_html=True)
 
-
 #hide streamlit menu and footer
 hide_menu_style = """
           <style>
@@ -35,6 +36,12 @@ hide_menu_style = """
           </style>
           """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+#progress bar to load app
+@st.cache_data
+def process_for_index(index: int) -> int:
+    sleep(0.5)
+    return 2 * index + 1
 
 #display title and caption
 st.subheader(":orange[FORM PRODUKSI PIE GURIH90/JOGLO] 🧁")
