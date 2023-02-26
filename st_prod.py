@@ -96,7 +96,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
           </style>
           """
     #inject CSS with markdown
-    st.markdown(hide_table_row_index, unsafe_allow_html=True)
+    hide = st.markdown(hide_table_row_index, unsafe_allow_html=True)
     container = st.container()
     container.write(":orange[Total Produksi Varian Rasa]")
     st.table(df)
