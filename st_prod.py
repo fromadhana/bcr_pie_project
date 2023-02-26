@@ -7,7 +7,6 @@ author: f.romadhana@gmail.com
 import pandas as pd
 import streamlit as st
 from time import sleep
-from stqdm import stqdm
 from datetime import datetime
 from google.oauth2 import service_account
 from shillelagh.backends.apsw.db import connect
@@ -37,7 +36,7 @@ hide_menu_style = """
           """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-#progress bar to load app
+#caching 
 @st.cache_data
 def process_for_index(index: int) -> int:
     sleep(0.5)
