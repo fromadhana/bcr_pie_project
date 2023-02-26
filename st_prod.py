@@ -13,7 +13,19 @@ from shillelagh.backends.apsw.db import connect
 #set page configuration
 st.set_page_config(
   page_title="Form Produksi Pie",
-  page_icon="👨🏻‍🍳")
+  page_icon="👋🏻",
+  layout="wide")
+
+#set padding page
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
+
 
 #hide streamlit menu and footer
 hide_menu_style = """
