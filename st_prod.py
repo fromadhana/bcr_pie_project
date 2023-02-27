@@ -92,8 +92,8 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     gt = sum_p8 + sum_p6
     #create dataframe
     df = pd.DataFrame({"Varian Rasa": ["Original", "Coklat", "Matcha", "Banana", "Strawberry", "Mix"], 
-                        "Pie Gurih 6": [n61, n62, n63, n64, n65, n66], 
-                        "Pie Gurih 8": [n81, n82, n83, n84, n85, n86]})
+                        "Pie isi 6": [n61, n62, n63, n64, n65, n66], 
+                        "Pie isi 8": [n81, n82, n83, n84, n85, n86]})
     #CSS to inject contained in a string
     hide_table_row_index = """
           <style>
