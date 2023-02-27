@@ -53,8 +53,8 @@ with st.form(key= "form_produksi", clear_on_submit=True):
 
    #multiselect for employee attendance
    abs = st.multiselect(":orange[Siapa saja yang masuk hari ini?] 👨🏻‍🍳",
-        ['Muh. Firman Sah', 'M. Ryan Sah', 
-        'Marfian Dani', 'Ahmad Maulana (Tibung)', 
+        ['M. Firmansah', 'M. Riyansyah', 
+        'Marfiandani', 'Ahmad Maulana', 
         'Firmansyah', 'Indra Danur Wendra'])
    
    #selectbox for number of pie sets produced
@@ -147,5 +147,3 @@ with st.form(key= "form_produksi", clear_on_submit=True):
    else:
     st.warning('Isi jumlah BOX sesuai dengan varian rasa yang di produksi. SEMANGAT!', icon="⚠️")
     st.stop()
-
-
