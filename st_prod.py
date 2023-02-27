@@ -110,6 +110,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     #show related information
     st.write(":green[Tanggal :] {}".format(tp))
     st.write(":green[Tim Produksi :] {}".format(abs))
+    st.write(":green[Merk Produksi :] {}".format(merk))
     st.write(":orange[Jumlah SET :] {}".format(set), "set")
     st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
     st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
