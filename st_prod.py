@@ -4,6 +4,7 @@ author: f.romadhana@gmail.com
 """
 
 #import necessary libraries
+import time
 import pandas as pd
 import streamlit as st
 from time import sleep
@@ -48,20 +49,27 @@ st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi p
 
 #display streamlit form
 with st.form(key= "form_produksi", clear_on_submit=True):
-   #date input
+   #datetime now
    tp = st.date_input(label=":orange[Tanggal Produksi] 📅")
-
+   timenow = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+   time.sleep(1)
+   
    #multiselect for employee attendance
    abs = st.multiselect(":orange[Siapa saja yang masuk hari ini?] 👨🏻‍🍳",
         ['M. Firmansah', 'M. Riyansyah', 
         'Marfiandani', 'Ahmad Maulana', 
         'Firmansyah', 'Indra Danur Wendra'])
    
-   #selectbox for number of pie sets produced
-   set = st.selectbox(':orange[Berapa SET produksi?]💰', list(range(21)))
-   
+   #space for visibility input pie brand & set number
+   st.title(" ")
+   st.title(" ")
+   st.title(" ")
+
    #selectbox for pie brand
    merk = st.selectbox(':orange[Merk yang di produksi?]🎯', ('Pie Gurih90', 'Pie Joglo'))
+   
+   #selectbox for number of pie sets produced
+   set = st.selectbox(':orange[Berapa SET produksi?]💰', list(range(21)))
    
    #number of boxes produced per pie flavor
    st.caption(":orange[Berapa BOX varian rasa yang di produksi?]")
@@ -108,7 +116,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     st.table(df)
 
     #show related information
-    st.write(":green[Tanggal :] {}".format(tp))
+    st.write(":green[Tanggal/Jam :] {}".format(timenow))
     st.write(":green[Tim Produksi :] {}".format(abs))
     st.write(":green[Merk Produksi :] {}".format(merk))
     st.write(":orange[Jumlah SET :] {}".format(set), "set")
@@ -138,10 +146,11 @@ with st.form(key= "form_produksi", clear_on_submit=True):
               "auth_provider_x509_cert_url" : st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
               "client_x509_cert_url" : st.secrets["gcp_service_account"]["client_x509_cert_url"]},
               "subject" : st.secrets["gcp_service_account"]["client_email"],},},)
+    
     #load to gsheet
     cursor = connection.cursor()
     sheet_url = st.secrets["private_gsheets_url"]
-    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{set}", "{merk}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}")'
+    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}")'
     cursor.execute(query)
     st.balloons()
 
