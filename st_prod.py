@@ -4,6 +4,7 @@ author: f.romadhana@gmail.com
 """
 
 #import necessary libraries
+import pytz
 import time
 import pandas as pd
 import streamlit as st
@@ -51,7 +52,7 @@ st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi p
 with st.form(key= "form_produksi", clear_on_submit=True):
    #datetime now
    tp = st.date_input(label=":orange[Tanggal Produksi] 📅")
-   timenow = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+   timenow = datetime.now(pytz.timezone('Asia/Jakarta')).strftime("%d-%m-%Y %H:%M:%S")
    time.sleep(1)
    
    #multiselect for employee attendance
