@@ -23,8 +23,8 @@ st.set_page_config(
 st.markdown(f""" <style>
       .block-container{{
         padding-top: 1rem;
-        padding-right: 2rem;
-        padding-left: 2rem;
+        padding-right: 0rem;
+        padding-left: 0rem;
         padding-bottom: 1rem;
     }} </style> """, unsafe_allow_html=True)
 
