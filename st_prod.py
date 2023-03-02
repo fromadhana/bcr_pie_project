@@ -149,9 +149,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
             gap: 0rem;
         }
         </style>
-        """,unsafe_allow_html=True)    
-        st.write(":green[Tanggal/Jam :] {}".format(timenow))
-        st.write(":green[Tim Produksi :] {}".format(abs))
+        """,unsafe_allow_html=True)
         st.write(":green[Merk Produksi :] {}".format(merk))
         st.write(":orange[Jumlah SET :] {}".format(set), "set")
         st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
