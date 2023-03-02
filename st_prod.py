@@ -116,13 +116,16 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     st.table(df)
 
     #show related information
-    st.write(":green[Tanggal/Jam :] {}".format(timenow))
-    st.write(":green[Tim Produksi :] {}".format(abs))
-    st.write(":green[Merk Produksi :] {}".format(merk))
-    st.write(":orange[Jumlah SET :] {}".format(set), "set")
-    st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
-    st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
-    st.write(":green[GRAND TOTAL :] {}".format(gt), "box")
+    col1, col2 = st.columns(2)
+    with col1:
+      st.write(":green[Tanggal/Jam :] {}".format(timenow))
+      st.write(":green[Tim Produksi :] {}".format(abs))
+    with col2:
+      st.write(":green[Merk Produksi :] {}".format(merk))
+      st.write(":orange[Jumlah SET :] {}".format(set), "set")
+      st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
+      st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
+      st.write(":green[GRAND TOTAL :] {}".format(gt), "box")
     st.success('Sukses tercatat! Terima kasih sudah bekerja keras hari ini! Semangat untuk hari esok!', icon="✅")
 
     #gcp credentials
