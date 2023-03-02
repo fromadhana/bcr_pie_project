@@ -82,7 +82,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     }
     </style>
     """,unsafe_allow_html=True)
-    st.caption("Pie isi 6 (ENAM)")
+    st.caption(":green[**Pie isi 6 (ENAM)**]")
     n61 = st.number_input('Original 6', min_value=0, max_value=1000, step=1)
     n62 = st.number_input('Coklat 6', min_value=0, max_value=1000, step=1)
     n63 = st.number_input('Matcha 6', min_value=0, max_value=1000, step=1)
@@ -97,7 +97,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     }
     </style>
     """,unsafe_allow_html=True)
-    st.caption("Pie isi 8 (DELAPAN)")
+    st.caption(":blue[**Pie isi 8 (DELAPAN)**]")
     n81 = st.number_input('Original 8', min_value=0, max_value=1000, step=1)
     n82 = st.number_input('Coklat 8', min_value=0, max_value=1000, step=1)
     n83 = st.number_input('Matcha 8', min_value=0, max_value=1000, step=1)
@@ -139,8 +139,8 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         }
         </style>
         """,unsafe_allow_html=True)
-        st.write(":green[Tanggal/Jam :] {}".format(timenow))
-        st.write(":green[Tim Produksi :] {}".format(abs))
+        st.write(":orange[Tanggal/Jam :] {}".format(timenow))
+        st.write(":orange[Tim Produksi :] {}".format(abs))
     
     with col4:
         st.markdown("""
@@ -150,11 +150,11 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         }
         </style>
         """,unsafe_allow_html=True)
-        st.write(":green[Merk Produksi :] {}".format(merk))
+        st.write(":orange[Merk Produksi :] {}".format(merk))
         st.write(":orange[Jumlah SET :] {}".format(set), "set")
-        st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
-        st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
-        st.write(":green[GRAND TOTAL :] {}".format(gt), "box")
+        st.write(":green[**Total Pie isi 6 :**] {}".format(sum_p6), "box")
+        st.write(":blue[**Total Pie isi 8 :**] {}".format(sum_p8), "box")
+        st.write(":orange[**GRAND TOTAL :**] {}".format(gt), "box")
     st.success('Sukses tercatat! Terima kasih sudah bekerja keras hari ini! Semangat untuk hari esok!', icon="✅")
 
     #gcp credentials
