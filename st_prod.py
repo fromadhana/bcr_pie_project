@@ -75,6 +75,13 @@ with st.form(key= "form_produksi", clear_on_submit=True):
    st.caption(":orange[Berapa BOX varian rasa yang di produksi?]")
    col1, col2 = st.columns(2)
    with col1:
+    st.markdown("""
+    <style>
+    [data-testid=column]:nth-of-type(1) [data-testid=stVerticalBlock]{
+        gap: 0rem;
+    }
+    </style>
+    """,unsafe_allow_html=True)
     st.caption("Pie isi 6 (ENAM)")
     n61 = st.number_input('Original 6', min_value=0, max_value=1000, step=1)
     n62 = st.number_input('Coklat 6', min_value=0, max_value=1000, step=1)
@@ -83,6 +90,13 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     n65 = st.number_input('Strawberry 6', min_value=0, max_value=1000, step=1)
     n66 = st.number_input('Mix 6', min_value=0, max_value=1000, step=1)
    with col2:
+    st.markdown("""
+    <style>
+    [data-testid=column]:nth-of-type(2) [data-testid=stVerticalBlock]{
+        gap: 0rem;
+    }
+    </style>
+    """,unsafe_allow_html=True)
     st.caption("Pie isi 8 (DELAPAN)")
     n81 = st.number_input('Original 8', min_value=0, max_value=1000, step=1)
     n82 = st.number_input('Coklat 8', min_value=0, max_value=1000, step=1)
@@ -116,16 +130,33 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     st.table(df)
 
     #show related information
-    col1, col2 = st.columns(2)
-    with col1:
-      st.write(":green[Tanggal/Jam :] {}".format(timenow))
-      st.write(":green[Tim Produksi :] {}".format(abs))
-    with col2:
-      st.write(":green[Merk Produksi :] {}".format(merk))
-      st.write(":orange[Jumlah SET :] {}".format(set), "set")
-      st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
-      st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
-      st.write(":green[GRAND TOTAL :] {}".format(gt), "box")
+    col3, col4 = st.columns(2)
+    with col3:
+        st.markdown("""
+        <style>
+        [data-testid=column]:nth-of-type(3) [data-testid=stVerticalBlock]{
+            gap: 0rem;
+        }
+        </style>
+        """,unsafe_allow_html=True)
+        st.write(":green[Tanggal/Jam :] {}".format(timenow))
+        st.write(":green[Tim Produksi :] {}".format(abs))
+    
+    with col4:
+        st.markdown("""
+        <style>
+        [data-testid=column]:nth-of-type(4) [data-testid=stVerticalBlock]{
+            gap: 0rem;
+        }
+        </style>
+        """,unsafe_allow_html=True)    
+        st.write(":green[Tanggal/Jam :] {}".format(timenow))
+        st.write(":green[Tim Produksi :] {}".format(abs))
+        st.write(":green[Merk Produksi :] {}".format(merk))
+        st.write(":orange[Jumlah SET :] {}".format(set), "set")
+        st.write(":orange[Total Pie isi 6 :] {}".format(sum_p6), "box")
+        st.write(":orange[Total Pie isi 8 :] {}".format(sum_p8), "box")
+        st.write(":green[GRAND TOTAL :] {}".format(gt), "box")
     st.success('Sukses tercatat! Terima kasih sudah bekerja keras hari ini! Semangat untuk hari esok!', icon="✅")
 
     #gcp credentials
