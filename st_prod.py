@@ -20,13 +20,12 @@ st.set_page_config(
   layout="wide")
 
 #set padding page
-padding = 0
 st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
+      .block-container{{
+        padding-top: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        padding-bottom: 1rem;
     }} </style> """, unsafe_allow_html=True)
 
 #hide streamlit menu and footer
