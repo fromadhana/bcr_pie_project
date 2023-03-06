@@ -11,6 +11,7 @@ import streamlit as st
 from time import sleep
 from datetime import datetime
 from google.oauth2 import service_account
+from dateutil.relativedelta import relativedelta
 from shillelagh.backends.apsw.db import connect
 
 #set page configuration
@@ -49,9 +50,12 @@ st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi p
 
 #display streamlit form
 with st.form(key= "form_produksi", clear_on_submit=True):
-   #datetime now
+   #datetime now & expired date
    tp = st.date_input(label=":orange[Tanggal Produksi] 📅")
    timenow = datetime.now(pytz.timezone('Asia/Jakarta')).strftime("%d-%m-%Y %H:%M:%S")
+   current_date = datetime.now(pytz.timezone('Asia/Jakarta'))
+   expired_date = current_date + relativedelta(months=3)
+   ed = expired_date.strftime('%d-%m-%Y')
    time.sleep(1)
    
    #multiselect for employee attendance
@@ -83,12 +87,12 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     </style>
     """,unsafe_allow_html=True)
     st.caption(":green[**Pie isi 6 (ENAM)**]")
-    n61 = st.number_input('Original 6', step=1)
-    n62 = st.number_input('Coklat 6', step=1)
-    n63 = st.number_input('Matcha 6', step=1)
-    n64 = st.number_input('Banana 6', step=1)
-    n65 = st.number_input('Strawberry 6', step=1)
-    n66 = st.number_input('Mix 6', step=1)
+    n61 = st.number_input('Original 6', min_value=0, step=1, key='ori6')
+    n62 = st.number_input('Coklat 6', min_value=0, step=1, key='cok6')
+    n63 = st.number_input('Matcha 6', min_value=0, step=1, key='mat6')
+    n64 = st.number_input('Banana 6', min_value=0, step=1, key='ban6')
+    n65 = st.number_input('Strawberry 6', min_value=0, step=1, key= 'str6')
+    n66 = st.number_input('Mix 6', min_value=0, step=1, key='mix6')
    with col2:
     st.markdown("""
     <style>
@@ -98,12 +102,12 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     </style>
     """,unsafe_allow_html=True)
     st.caption(":blue[**Pie isi 8 (DELAPAN)**]")
-    n81 = st.number_input('Original 8', step=1)
-    n82 = st.number_input('Coklat 8', step=1)
-    n83 = st.number_input('Matcha 8', step=1)
-    n84 = st.number_input('Banana 8', step=1)
-    n85 = st.number_input('Strawberry 8', step=1)
-    n86 = st.number_input('Mix 8', step=1)
+    n81 = st.number_input('Original 8', min_value=0, step=1, key='ori8')
+    n82 = st.number_input('Coklat 8', min_value=0, step=1, key='cok8')
+    n83 = st.number_input('Matcha 8', min_value=0, step=1, key='mat8')
+    n84 = st.number_input('Banana 8', min_value=0, step=1, key='ban8')
+    n85 = st.number_input('Strawberry 8', min_value=0, step=1, key='str8')
+    n86 = st.number_input('Mix 8', min_value=0, step=1, key='mix8')
     
    #submit button
    submitted = st.form_submit_button(label="Submit", use_container_width=True, type='primary')
@@ -139,7 +143,8 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         }
         </style>
         """,unsafe_allow_html=True)
-        st.write(":orange[Tanggal/Jam :] {}".format(timenow))
+        st.write(":orange[Tanggal/Jam Produksi :] {}".format(timenow))
+        st.write(":orange[Label Expired Date :] {}".format(ed))
         st.write(":orange[Tim Produksi :] {}".format(abs))
     
     with col4:
