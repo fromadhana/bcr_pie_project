@@ -46,7 +46,7 @@ def process_for_index(index: int) -> int:
 
 #display title and caption
 st.subheader(":orange[FORM PRODUKSI PIE GURIH90/JOGLO] 🧁")
-st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi pie PT. Bogati Cerita Rasa")
+st.caption("Form ini bertujuan untuk memantau secara sistematis semua produksi pie PT. Bogati Cerita Rasa.")
 
 #display streamlit form
 with st.form(key= "form_produksi", clear_on_submit=True):
@@ -75,6 +75,10 @@ with st.form(key= "form_produksi", clear_on_submit=True):
    #selectbox for number of pie sets produced
    set = st.selectbox(':orange[Berapa SET produksi?]💰', list(range(21)))
    
+   #number of loyang if there isn't box to be packed
+   st.caption("⚠️ PERHATIAN! Kolom loyang HANYA di isi ketika box/packaging tidak ada, namun hari tersebut tetap ada produksi. Apabila box/packaging tersedia maka kolom loyang bisa dikosongkan.")
+   loyang = st.number_input(':red[Berapa LOYANG produksi?]📥', min_value=0, step=1, key='loyang')
+
    #number of boxes produced per pie flavor
    st.caption(":orange[Berapa BOX varian rasa yang di produksi?]")
    col1, col2 = st.columns(2)
@@ -157,6 +161,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         """,unsafe_allow_html=True)
         st.write(":orange[Merk Produksi :] {}".format(merk))
         st.write(":orange[Jumlah SET :] {}".format(set), "set")
+        st.write(":orange[Jumlah LOYANG :] {}".format(loyang), "loyang")
         st.write(":green[**Total Pie isi 6 :**] {}".format(sum_p6), "box")
         st.write(":blue[**Total Pie isi 8 :**] {}".format(sum_p8), "box")
         st.write(":orange[**GRAND TOTAL :**] {}".format(gt), "box")
@@ -187,7 +192,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     #load to gsheet
     cursor = connection.cursor()
     sheet_url = st.secrets["private_gsheets_url"]
-    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}")'
+    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}", "{loyang}")'
     cursor.execute(query)
     st.balloons()
 
