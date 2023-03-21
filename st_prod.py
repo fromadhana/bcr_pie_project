@@ -95,8 +95,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     n62 = st.number_input('Coklat 6', min_value=0, step=1, key='cok6')
     n63 = st.number_input('Matcha 6', min_value=0, step=1, key='mat6')
     n64 = st.number_input('Banana 6', min_value=0, step=1, key='ban6')
-    n65 = st.number_input('Strawberry 6', min_value=0, step=1, key= 'str6')
-    n66 = st.number_input('Mix 6', min_value=0, step=1, key='mix6')
+    n65 = st.number_input('Mix 6', min_value=0, step=1, key='mix6')
    with col2:
     st.markdown("""
     <style>
@@ -108,22 +107,21 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     st.caption(":blue[**Pie isi 8 (DELAPAN)**]")
     n81 = st.number_input('Original 8', min_value=0, step=1, key='ori8')
     n82 = st.number_input('Coklat 8', min_value=0, step=1, key='cok8')
-    n83 = st.number_input('Matcha 8', min_value=0, step=1, key='mat8')
-    n84 = st.number_input('Banana 8', min_value=0, step=1, key='ban8')
-    n85 = st.number_input('Strawberry 8', min_value=0, step=1, key='str8')
-    n86 = st.number_input('Mix 8', min_value=0, step=1, key='mix8')
-    
+    n83 = st.number_input('Strawberry 8', min_value=0, step=1, key='str8')
+    n84 = st.number_input('Cheezy 8', min_value=0, step=1, key='cheez8')
+    n85 = st.number_input('Mix 8', min_value=0, step=1, key='mix8')
+
    #submit button
    submitted = st.form_submit_button(label="Submit", use_container_width=True, type='primary')
    if submitted:
     #sum all number
-    sum_p6 = n61 + n62 + n63 + n64 + n65 + n66
-    sum_p8 = n81 + n82 + n83 + n84 + n85 + n86
+    sum_p6 = n61 + n62 + n63 + n64 + n65
+    sum_p8 = n81 + n82 + n83 + n84 + n85
     gt = sum_p8 + sum_p6
     #create dataframe
-    df = pd.DataFrame({"Varian Rasa": ["Original", "Coklat", "Matcha", "Banana", "Strawberry", "Mix"], 
-                        "Pie isi 6": [n61, n62, n63, n64, n65, n66], 
-                        "Pie isi 8": [n81, n82, n83, n84, n85, n86]})
+    df = pd.DataFrame({"Varian Rasa": ["Original", "Coklat", "Matcha/Strawberry", "Banana/Cheezy", "Mix"], 
+                        "Pie isi 6": [n61, n62, n63, n64, n65], 
+                        "Pie isi 8": [n81, n82, n83, n84, n85]})
     #CSS to inject contained in a string
     hide_table_row_index = """
           <style>
@@ -192,7 +190,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     #load to gsheet
     cursor = connection.cursor()
     sheet_url = st.secrets["private_gsheets_url"]
-    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n66}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{abs}", "{loyang}")'
+    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{abs}", "{loyang}")'
     cursor.execute(query)
     st.balloons()
 
