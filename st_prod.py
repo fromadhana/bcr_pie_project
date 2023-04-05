@@ -90,7 +90,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     }
     </style>
     """,unsafe_allow_html=True)
-    st.caption(":green[**Pie isi 6 (ENAM)**]")
+    st.caption(":green[**Pie isi 6 (ENAM) / 12 (DUABELAS)**]")
     n61 = st.number_input('Original 6', min_value=0, step=1, key='ori6')
     n62 = st.number_input('Coklat 6', min_value=0, step=1, key='cok6')
     n63 = st.number_input('Matcha 6', min_value=0, step=1, key='mat6')
@@ -164,7 +164,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         st.write(":orange[Jumlah LOYANG :] {}".format(loyang), "loyang")
         st.write(":green[**Total Pie isi 6 :**] {}".format(sum_p6), "box")
         st.write(":blue[**Total Pie isi 8 :**] {}".format(sum_p8), "box")
-        st.write(":yellow[**Total Pie isi 12 :**] {}".format(sum_p12), "box")
+        st.write(":red[**Total Pie isi 12 :**] {}".format(sum_p12), "box")
         st.write(":orange[**GRAND TOTAL :**] {}".format(gt), "box")
     st.success('Sukses tercatat! Terima kasih sudah bekerja keras hari ini! Semangat untuk hari esok!', icon="✅")
 
