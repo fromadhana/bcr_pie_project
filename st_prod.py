@@ -96,6 +96,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     n63 = st.number_input('Matcha 6', min_value=0, step=1, key='mat6')
     n64 = st.number_input('Banana 6', min_value=0, step=1, key='ban6')
     n65 = st.number_input('Mix 6', min_value=0, step=1, key='mix6')
+    n66 = st.number_input('Nastar 12', min_value=0, step=1, key='nastar12') 
    with col2:
     st.markdown("""
     <style>
@@ -110,18 +111,19 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     n83 = st.number_input('Strawberry 8', min_value=0, step=1, key='str8')
     n84 = st.number_input('Cheezy 8', min_value=0, step=1, key='cheez8')
     n85 = st.number_input('Mix 8', min_value=0, step=1, key='mix8')
-
+    n86 = st.number_input('Nastar 8', min_value=0, step=1, key='nastar8')
    #submit button
    submitted = st.form_submit_button(label="Submit", use_container_width=True, type='primary')
    if submitted:
     #sum all number
     sum_p6 = n61 + n62 + n63 + n64 + n65
-    sum_p8 = n81 + n82 + n83 + n84 + n85
-    gt = sum_p8 + sum_p6
+    sum_p12 = n66
+    sum_p8 = n81 + n82 + n83 + n84 + n85 + n86
+    gt = sum_p6 + sum_p12 + sum_p8 
     #create dataframe
-    df = pd.DataFrame({"Varian Rasa": ["Original", "Coklat", "Matcha/Strawberry", "Banana/Cheezy", "Mix"], 
-                        "Pie isi 6": [n61, n62, n63, n64, n65], 
-                        "Pie isi 8": [n81, n82, n83, n84, n85]})
+    df = pd.DataFrame({"Varian Rasa": ["Original", "Coklat", "Matcha/Strawberry", "Banana/Cheezy", "Mix", "Nastar"], 
+                        "Pie isi 6/12": [n61, n62, n63, n64, n65, n66], 
+                        "Pie isi 8": [n81, n82, n83, n84, n85, n86]})
     #CSS to inject contained in a string
     hide_table_row_index = """
           <style>
@@ -162,6 +164,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
         st.write(":orange[Jumlah LOYANG :] {}".format(loyang), "loyang")
         st.write(":green[**Total Pie isi 6 :**] {}".format(sum_p6), "box")
         st.write(":blue[**Total Pie isi 8 :**] {}".format(sum_p8), "box")
+        st.write(":yellow[**Total Pie isi 12 :**] {}".format(sum_p12), "box")
         st.write(":orange[**GRAND TOTAL :**] {}".format(gt), "box")
     st.success('Sukses tercatat! Terima kasih sudah bekerja keras hari ini! Semangat untuk hari esok!', icon="✅")
 
@@ -190,7 +193,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
     #load to gsheet
     cursor = connection.cursor()
     sheet_url = st.secrets["private_gsheets_url"]
-    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{abs}", "{loyang}")'
+    query = f'INSERT INTO "{sheet_url}" VALUES ("{tp}", "{merk}", "{set}", "{n61}", "{n62}", "{n63}", "{n64}", "{n65}", "{n81}", "{n82}", "{n83}", "{n84}", "{n85}", "{n86}", "{n66}", "{abs}", "{loyang}")'
     cursor.execute(query)
     st.balloons()
 
