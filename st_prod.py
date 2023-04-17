@@ -61,7 +61,7 @@ with st.form(key= "form_produksi", clear_on_submit=True):
    #multiselect for employee attendance
    abs = st.multiselect(":orange[Siapa saja yang masuk hari ini?] 👨🏻‍🍳",
         ['M. Firmansah', 'M. Riyansyah', 
-        'Marfiandani', 'Ahmad Maulana', 
+        'Marfiandani', 
         'Firmansyah', 'Indra Danur Wendra'])
    
    #space for visibility input pie brand & set number
